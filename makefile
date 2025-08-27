@@ -6,8 +6,7 @@ run:
 	./TETRIS
 
 # Clean up executable
-clean:
+clear
 	rm -f TETRIS
 
-# Legacy target name
-clear: clean
+
