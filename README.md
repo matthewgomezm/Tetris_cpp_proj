@@ -1,4 +1,4 @@
-# tetris brother
+# TETRIS
 - A Tetris game in c++. 🎮
 - Designed to practice OOP in C++ as well as practice using the **raylib** library.
 ## How to run
