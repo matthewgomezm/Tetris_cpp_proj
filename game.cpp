@@ -1,6 +1,7 @@
 #include "game.h"
 #include <random>
 
+//default constructor for game
  Game::Game()
 {
     grid = Grid();
@@ -10,6 +11,8 @@
     gameover = false;
     score = 0;
 }
+
+//function that returns a random block in the sequence
 
 Block Game::GetRandomBlock()
 {
@@ -23,11 +26,13 @@ Block Game::GetRandomBlock()
     return block;
 }
 
+//returns each block type
 std::vector<Block> Game::GetEveryBlock()
 {
     return {I(), J(), L(), O(), S(), T(), Z()};
 }
 
+//draws the window, current block, and the next block in the space shown on the UI
 void Game::Draw()
 {
     grid.Draw();
@@ -36,6 +41,8 @@ void Game::Draw()
     
 }
 
+//handles input conditions
+// below this are the input functions
 void Game::Input()
 {
     int key = GetKeyPressed();
@@ -54,7 +61,7 @@ void Game::Input()
         break;
         case KEY_DOWN:
         MoveDown();
-        UpdateScore(0, 1);
+        UpdateScore(0, 1); //updates the score if pushed down 
         break;
         case KEY_UP:
         MoveUp();
@@ -108,6 +115,7 @@ void Game::MoveUp()
     }
 }
 
+// tests if the block is out of bounds according to position
 bool Game::OutOfBounds()
 {
     std::vector<Position> tiles = current_block.GetCellPosition();
@@ -162,6 +170,7 @@ bool Game::BlockFits()
     return true;
 }
 
+// function resetting the game conditions and block conditions to begin a new cycle
 void Game::Reset()
 {
     grid.Initialize();
@@ -171,15 +180,15 @@ void Game::Reset()
     score = 0;
 }
 
+//updates score 
 void Game::UpdateScore(int rows_cleared, int movingdown)
 {
-    // Soft drop: +1 point per cell moved down when player presses down
+
     if (movingdown > 0)
     {
         score += movingdown;
     }
 
-    // Line clear scoring (standard Tetris-like values)
     switch (rows_cleared)
     {
         case 1:
