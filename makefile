@@ -6,7 +6,7 @@ run:
 	./TETRIS
 
 # Clean up executable
-clear
+clear:
 	rm -f TETRIS
 
 
